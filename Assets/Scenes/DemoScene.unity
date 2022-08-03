@@ -469,7 +469,7 @@ GameObject:
   m_Component:
   - component: {fileID: 15894718}
   - component: {fileID: 15894719}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gr1 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -979,7 +979,7 @@ GameObject:
   m_Component:
   - component: {fileID: 67484416}
   - component: {fileID: 67484417}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fl1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4059,7 +4059,7 @@ GameObject:
   m_Component:
   - component: {fileID: 383092913}
   - component: {fileID: 383092914}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FlLit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4227,7 +4227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 403790456}
   - component: {fileID: 403790457}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Moss1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4484,7 +4484,7 @@ GameObject:
   m_Component:
   - component: {fileID: 425285153}
   - component: {fileID: 425285154}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Moss1 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4652,7 +4652,7 @@ GameObject:
   m_Component:
   - component: {fileID: 441032967}
   - component: {fileID: 441032968}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GrLit (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4820,7 +4820,7 @@ GameObject:
   m_Component:
   - component: {fileID: 464702927}
   - component: {fileID: 464702928}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Moss1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5062,136 +5062,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &510236660
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 510236664}
-  - component: {fileID: 510236663}
-  - component: {fileID: 510236662}
-  - component: {fileID: 510236661}
-  - component: {fileID: 510236665}
-  - component: {fileID: 510236666}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!81 &510236661
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 510236660}
-  m_Enabled: 1
---- !u!124 &510236662
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 510236660}
-  m_Enabled: 1
---- !u!20 &510236663
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 510236660}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 5000
-  field of view: 42
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 1
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!4 &510236664
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 510236660}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.85, z: -15}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 865646602}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &510236665
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 510236660}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a0ea458573e58f74490b19b7d61bbe1d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &510236666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 510236660}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3a677228f5ddd43a73958c316fe157, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  clampLeft: -37.26
-  clampRight: 6.09
 --- !u!1 &514112563
 GameObject:
   m_ObjectHideFlags: 0
@@ -6099,7 +5969,7 @@ GameObject:
   m_Component:
   - component: {fileID: 583897809}
   - component: {fileID: 583897810}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Moss1 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6222,7 +6092,7 @@ GameObject:
   m_Component:
   - component: {fileID: 604777401}
   - component: {fileID: 604777402}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gr1 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6730,7 +6600,7 @@ GameObject:
   m_Component:
   - component: {fileID: 659150814}
   - component: {fileID: 659150815}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GrLit (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7698,7 +7568,7 @@ GameObject:
   m_Component:
   - component: {fileID: 846534782}
   - component: {fileID: 846534783}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gr1 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7856,177 +7726,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &865646599
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 865646602}
-  - component: {fileID: 865646601}
-  - component: {fileID: 865646600}
-  - component: {fileID: 865646603}
-  - component: {fileID: 865646605}
-  - component: {fileID: 865646604}
-  - component: {fileID: 865646606}
-  m_Layer: 0
-  m_Name: PlayerKnight
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!50 &865646600
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 865646599}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!212 &865646601
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 865646599}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 161830095
-  m_SortingLayer: 2
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 84ce2f114ad12bd4ebafc77060220324, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 5.12, y: 2.56}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &865646602
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 865646599}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.26, y: 1.02, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 510236664}
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &865646603
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 865646599}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.08093357, y: -1.068343}
-  m_Size: {x: 0.36101723, y: 0.36102033}
-  m_Direction: 0
---- !u!114 &865646604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 865646599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 495ab215a3040064d964a7f7d0ee60de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &865646605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 865646599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df22b750299955d4f8fa470e9f393195, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!95 &865646606
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 865646599}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b28cb799beceddb41bc18750f10f2628, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &866418769
 GameObject:
   m_ObjectHideFlags: 0
@@ -8312,7 +8011,7 @@ GameObject:
   m_Component:
   - component: {fileID: 956151145}
   - component: {fileID: 956151146}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gr1 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10383,7 +10082,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1219469570}
   - component: {fileID: 1219469571}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gr5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11009,7 +10708,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1284243433}
   - component: {fileID: 1284243434}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Moss1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11453,7 +11152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1333368869}
   - component: {fileID: 1333368870}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Moss2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11537,7 +11236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1341614030}
   - component: {fileID: 1341614031}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Path
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11613,12 +11312,32 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -11.944456, y: -1.8083636}
-      - {x: -27.618929, y: -1.5734212}
+    - - {x: -11.297565, y: -1.9201709}
+      - {x: -11.983208, y: -2.002121}
+      - {x: -14.903166, y: -2.0346575}
+      - {x: -16.247444, y: -1.9039587}
+      - {x: -19.29932, y: -2.1350951}
+      - {x: -22.52304, y: -1.56458}
+      - {x: -25.127415, y: -1.3988895}
+      - {x: -29.34241, y: -1.4071364}
+      - {x: -30.381094, y: -1.6990123}
+      - {x: -32.026615, y: -2.211595}
       - {x: -6.988329, y: -5.344306}
-      - {x: 16.80026, y: -3.0323153}
-      - {x: 4.942602, y: -2.221102}
-      - {x: -7.272798, y: -1.9803535}
+      - {x: 21.885447, y: -2.0851045}
+      - {x: 20.774563, y: -1.7115394}
+      - {x: 19.21233, y: -1.7253664}
+      - {x: 18.040113, y: -1.8780968}
+      - {x: 17.567825, y: -1.9561731}
+      - {x: 16.065159, y: -1.8170142}
+      - {x: 13.057154, y: -2.0487676}
+      - {x: 9.769627, y: -2.672257}
+      - {x: 6.4450235, y: -2.723109}
+      - {x: 5.2628818, y: -2.4434638}
+      - {x: -0.08880961, y: -2.4754398}
+      - {x: -2.583823, y: -2.5891337}
+      - {x: -4.4956594, y: -2.2919824}
+      - {x: -7.0290027, y: -2.2272062}
+      - {x: -8.884105, y: -1.9320596}
 --- !u!1 &1348020677
 GameObject:
   m_ObjectHideFlags: 0
@@ -11818,7 +11537,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1381139577}
   - component: {fileID: 1381139578}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GrLit (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12104,7 +11823,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1407995222}
   - component: {fileID: 1407995223}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gr1 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18648,7 +18367,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1585430816}
   - component: {fileID: 1585430817}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite3_21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18837,7 +18556,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1587969098}
   - component: {fileID: 1587969099}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Moss2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18921,7 +18640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1591161444}
   - component: {fileID: 1591161445}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gr1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20008,7 +19727,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1685956181}
   - component: {fileID: 1685956182}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GrLit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20554,7 +20273,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1764547075}
   - component: {fileID: 1764547076}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gr1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21005,7 +20724,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1796507025}
   - component: {fileID: 1796507026}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Moss1 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21459,7 +21178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1810116542}
   - component: {fileID: 1810116543}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Moss1 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21890,7 +21609,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1847751144}
   - component: {fileID: 1847751145}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gr1 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22204,7 +21923,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1877867615}
   - component: {fileID: 1877867616}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Moss2 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22901,7 +22620,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1905233061}
   - component: {fileID: 1905233062}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gr1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23836,7 +23555,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1937814792}
   - component: {fileID: 1937814793}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gr3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25077,7 +24796,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2042139726}
   - component: {fileID: 2042139727}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GrLit (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25823,3 +25542,76 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &2012486776218012903
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2012486775355602144, guid: dfca32dcad699de4da774a5d44980a03, type: 3}
+      propertyPath: m_Name
+      value: PlayerKnight
+      objectReference: {fileID: 0}
+    - target: {fileID: 2012486775355602157, guid: dfca32dcad699de4da774a5d44980a03, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2012486775355602157, guid: dfca32dcad699de4da774a5d44980a03, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2012486775355602157, guid: dfca32dcad699de4da774a5d44980a03, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2012486775355602157, guid: dfca32dcad699de4da774a5d44980a03, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2012486775355602157, guid: dfca32dcad699de4da774a5d44980a03, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 2012486775355602157, guid: dfca32dcad699de4da774a5d44980a03, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 2012486775355602157, guid: dfca32dcad699de4da774a5d44980a03, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2012486775355602157, guid: dfca32dcad699de4da774a5d44980a03, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2012486775355602157, guid: dfca32dcad699de4da774a5d44980a03, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2012486775355602157, guid: dfca32dcad699de4da774a5d44980a03, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2012486775355602157, guid: dfca32dcad699de4da774a5d44980a03, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2012486775355602157, guid: dfca32dcad699de4da774a5d44980a03, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2012486775355602157, guid: dfca32dcad699de4da774a5d44980a03, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2012486775355602157, guid: dfca32dcad699de4da774a5d44980a03, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2012486775355602159, guid: dfca32dcad699de4da774a5d44980a03, type: 3}
+      propertyPath: m_GravityScale
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dfca32dcad699de4da774a5d44980a03, type: 3}
