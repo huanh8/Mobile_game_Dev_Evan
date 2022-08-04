@@ -22,8 +22,11 @@ public class PlayController : MonoBehaviour
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
-        Jump();
         Move();
+    }
+    void FixedUpdate()
+    {
+        Jump();
     }
     private void Move()
     {
@@ -31,6 +34,7 @@ public class PlayController : MonoBehaviour
         if (horizontal != 0)
         {
             transform.Translate(new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0) * Time.deltaTime * 10);
+
             if (horizontal > 0)
                 transform.localScale = new Vector3(1, 1, 1);
             else
@@ -39,11 +43,12 @@ public class PlayController : MonoBehaviour
     }
     private void Jump()
     {
-        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
+        if (IsGrounded() && Input.GetButtonDown("Jump"))
         {
-            //animator.SetBool("isJumping", true);
+            animator.SetBool("IsJumping", true);
             rd.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
         }
+
     }
     //check isgrounded
     private bool IsGrounded()
@@ -51,20 +56,20 @@ public class PlayController : MonoBehaviour
         var bounds = boxCollider.bounds;
         var center = boxCollider.bounds.center;
         var extents = boxCollider.bounds.extents;
-
         RaycastHit2D raycastHit = Physics2D.BoxCast(center, bounds.size, 0f, Vector2.down, extraHeightTest, pathLayer);
         Color raycolor = raycastHit ? Color.red : Color.green;
+
         if (raycastHit.collider != null)
-            raycolor = Color.green;
-        else
-            raycolor = Color.red;
+        {   
+            animator.SetBool("IsJumping", false);
+        }
 
         //right side of box collider
         Debug.DrawRay(center + new Vector3(extents.x, 0), Vector2.down * (extents.y + extraHeightTest), raycolor);
         //left side of box collider
         Debug.DrawRay(center - new Vector3(extents.x, 0), Vector2.down * (extents.y + extraHeightTest), raycolor);
         //down side of box collider
-        Debug.DrawRay(center - new Vector3(extents.x, extents.y + extraHeightTest), Vector3.right * (extents.x), raycolor);
+        Debug.DrawRay(center - new Vector3(extents.x, extents.y + extraHeightTest), Vector2.right * (extents.x + extraHeightTest), raycolor);
         return raycastHit.collider != null;
     }
 }

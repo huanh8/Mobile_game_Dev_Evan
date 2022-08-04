@@ -25553,6 +25553,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerKnight
       objectReference: {fileID: 0}
+    - target: {fileID: 2012486775355602155, guid: dfca32dcad699de4da774a5d44980a03, type: 3}
+      propertyPath: jumpSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2012486775355602157, guid: dfca32dcad699de4da774a5d44980a03, type: 3}
       propertyPath: m_RootOrder
       value: 12
