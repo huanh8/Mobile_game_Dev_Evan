@@ -20,6 +20,10 @@ public class PlayerController : MonoBehaviour
         movementInput = GetComponent<IMovementInput>();
         checkGround = GetComponent<CheckGround>();
     }
+    void start()
+    {
+        movementInput.OnFireEvent += Fire;
+    }
 
     void Update()
     {
@@ -32,7 +36,7 @@ public class PlayerController : MonoBehaviour
         //movePlayer
         playerMovement.MovePlayer(movementInput.MovementInputVector, movementSpeed);
         //flip player
-        flipPlayer.Filp(movementInput.Horizontal > 0);
+        flipPlayer.Filp(movementInput.Horizontal);
     }
 
     private void Jump()
@@ -41,7 +45,10 @@ public class PlayerController : MonoBehaviour
 
         if (checkGround.IsGrounded() && movementInput.IsJumping)
             playerMovement.PlayerJump(jumpSpeed);
-            
+    }
+    private void Fire()
+    {
+        Debug.Log("Attack");
     }
 
 }

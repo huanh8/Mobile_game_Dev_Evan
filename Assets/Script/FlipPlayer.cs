@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class FlipPlayer : MonoBehaviour
 {
-    public void Filp(bool isFilp)
-    {
-        transform.localScale = new Vector3(isFilp ? 1 : -1, 1, 1);
+    public void Filp(float horizontal)
+    {   
+        if (horizontal > 0)
+            transform.localScale = new Vector3(1, 1, 1);
+        else if (horizontal < 0)
+            transform.localScale = new Vector3(-1, 1, 1);    
     }
 
 }
