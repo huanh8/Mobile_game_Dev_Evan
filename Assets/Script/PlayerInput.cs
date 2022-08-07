@@ -6,18 +6,24 @@ using System;
 public class PlayerInput : MonoBehaviour, IMovementInput
 {
     public Vector2 MovementInputVector { get; private set; }
-
+    public float Horizontal { get; private set; }
+    public bool IsJumping { get; private set; }
     public event Action OnFireEvent;
     void Update()
     {
         GetMovementInput();
+        GetJumpInput();
         GetInteractInput();
     }
 
     private void GetMovementInput()
+    {   
+        Horizontal = Input.GetAxis("Horizontal");
+        MovementInputVector = new Vector2(Horizontal, 0);
+    }
+    private void GetJumpInput()
     {
-        MovementInputVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        MovementInputVector.Normalize();
+        IsJumping = Input.GetButtonDown("Jump");
     }
 
     private void GetInteractInput()
