@@ -13,7 +13,7 @@ public class PlayerInput : MonoBehaviour, IMovementInput
     {
         GetMovementInput();
         GetJumpInput();
-        GetInteractInput();
+        GetFireInput();
     }
 
     private void GetMovementInput()
@@ -26,7 +26,7 @@ public class PlayerInput : MonoBehaviour, IMovementInput
         IsJumping = Input.GetButtonDown("Jump");
     }
 
-    private void GetInteractInput()
+    private void GetFireInput()
     {
         if (Input.GetAxisRaw("Fire1") > 0)
             OnFireEvent?.Invoke();
