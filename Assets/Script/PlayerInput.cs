@@ -17,7 +17,7 @@ public class PlayerInput : MonoBehaviour, IMovementInput
     }
 
     private void GetMovementInput()
-    {   
+    {
         Horizontal = Input.GetAxis("Horizontal");
         MovementInputVector = new Vector2(Horizontal, 0);
     }
@@ -29,6 +29,8 @@ public class PlayerInput : MonoBehaviour, IMovementInput
     private void GetFireInput()
     {
         if (Input.GetAxisRaw("Fire1") > 0)
+        {
             OnFireEvent?.Invoke();
+        }
     }
 }
