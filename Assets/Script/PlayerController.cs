@@ -9,13 +9,9 @@ public class PlayerController : MonoBehaviour
     private FlipPlayer flipPlayer;
     private IMovementInput movementInput;//Interface for mobile input
     private CheckGround checkGround;
-    private Transform attackPoint;
-    [Range(0, 1)][SerializeField] private float attackRange = 0.5f;
-    public LayerMask whatIsEnemies;
     [Range(0, 20)][SerializeField] private float movementSpeed = 8f;
     [Range(0, 15)][SerializeField] private float jumpSpeed = 5f;
-    [Range(0, 1)][SerializeField] private float attackSpeed = 0.5f;
-    float nextAttack = 0;
+    private PlayerAttack playerAttack;
 
     void Awake()
     {
@@ -24,16 +20,10 @@ public class PlayerController : MonoBehaviour
         flipPlayer = GetComponent<FlipPlayer>();
         movementInput = GetComponent<IMovementInput>();
         checkGround = GetComponent<CheckGround>();
-        //get transform of attack point in child
-        attackPoint = transform.GetChild(0);
-    }
-    void OnEnable()
-    {
-        movementInput.OnFireEvent += Attack;
-    }
-    void OnDisable()
-    {
-        movementInput.OnFireEvent -= Attack;
+        playerAttack = GetComponent<PlayerAttack>();
+        //sbscript a onfire event to the player attack script and play attack animation
+        movementInput.OnFireEvent += playerAttack.Attack;
+        playerAttack.OnFireEventAnimation += playerAnimations.PlayerAttackAnimation;
     }
 
     void Update()
@@ -59,27 +49,4 @@ public class PlayerController : MonoBehaviour
             playerMovement.PlayerJump(jumpSpeed);
         }
     }
-    private void Attack()
-    {
-        if (Time.time >= nextAttack)
-        {
-            playerAnimations.PlayerAttackAnimation();
-            nextAttack = Time.time + attackSpeed;
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, whatIsEnemies);
-            foreach (Collider2D enemy in hitEnemies)
-            {
-                //enemy.GetComponent<Enemy>().TakeDamage(1);
-                Debug.Log("Attack enemy");
-            }
-            Debug.Log("Attack");
-        }
-
-    }
-    private void OnDrawGizmosSelected()
-    {
-        if (attackPoint == null)
-            return;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-    }
-
 }

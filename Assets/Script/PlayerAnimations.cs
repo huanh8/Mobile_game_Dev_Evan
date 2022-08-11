@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerAnimations : MonoBehaviour
 {
     private Animator animator;
-    public bool IsAttacking { get; set; }
 
     void Start()
     {
@@ -21,7 +20,7 @@ public class PlayerAnimations : MonoBehaviour
     }
     //attack animation  and attack animation     
     public void PlayerAttackAnimation()
-    {
-        animator.SetTrigger("Attack");     
+    {  
+        animator.SetTrigger("Attack");      
     }
 }
