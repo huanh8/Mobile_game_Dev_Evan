@@ -204,13 +204,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 495ab215a3040064d964a7f7d0ee60de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 0.5
-  whatIsEnemies:
-    serializedVersion: 2
-    m_Bits: 128
   movementSpeed: 5
   jumpSpeed: 8
-  attackSpeed: 0.5
 --- !u!114 &4097302494679119907
 MonoBehaviour:
   m_ObjectHideFlags: 0
