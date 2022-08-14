@@ -23,4 +23,12 @@ public class PlayerAnimations : MonoBehaviour
     {  
         animator.SetTrigger("Attack");      
     }
+    public void PlayerCrouch(bool isCrouching)
+    {
+        animator.SetBool("IsCrouching", isCrouching);
+    }
+    public void PlayerDash()
+    {
+        animator.SetTrigger("Dash");
+    }
 }

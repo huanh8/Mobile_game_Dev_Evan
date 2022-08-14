@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [Range(0, 20)][SerializeField] private float movementSpeed = 8f;
     [Range(0, 15)][SerializeField] private float jumpSpeed = 5f;
     private PlayerAttack playerAttack;
+    private CapsuleCollider2D headCollider;
+    //get collider for head
 
     void Awake()
     {
@@ -21,6 +23,7 @@ public class PlayerController : MonoBehaviour
         movementInput = GetComponent<IMovementInput>();
         checkGround = GetComponent<CheckGround>();
         playerAttack = GetComponent<PlayerAttack>();
+        headCollider = GetComponent<CapsuleCollider2D>();
         //sbscript a onfire event to the player attack script and play attack animation
         movementInput.OnFireEvent += playerAttack.Attack;
         playerAttack.OnFireEventAnimation += playerAnimations.PlayerAttackAnimation;
@@ -30,6 +33,7 @@ public class PlayerController : MonoBehaviour
     {
         Jump();
         Move();
+        Couch();
     }
     private void Move()
     {   //play walk animation
@@ -48,5 +52,11 @@ public class PlayerController : MonoBehaviour
         {
             playerMovement.PlayerJump(jumpSpeed);
         }
+    }
+    private void Couch()
+    {
+        headCollider.enabled = !movementInput.IsCrouching;
+        playerAnimations.PlayerCrouch(movementInput.IsCrouching);
+        playerMovement.SetCrouch(movementInput.IsCrouching);
     }
 }

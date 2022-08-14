@@ -7,10 +7,14 @@ public class PlayerInput : MonoBehaviour, IMovementInput
 {
     public Vector2 MovementInputVector { get; private set; }
     public float Horizontal { get; private set; }
+    public bool IsCrouching { get; private set; }
     public bool IsJumping { get; private set; }
     public event Action OnFireEvent;
+    public event Action OnDashEvent;
+
     void Update()
-    {
+    {   
+        GetCouchInput();
         GetMovementInput();
         GetJumpInput();
         GetFireInput();
@@ -33,4 +37,16 @@ public class PlayerInput : MonoBehaviour, IMovementInput
             OnFireEvent?.Invoke();
         }
     }
+    private void GetCouchInput()
+    {   
+        if (Input.GetButtonDown("Crouch"))
+        {
+            IsCrouching = true;
+        }
+        else if (Input.GetButtonUp("Crouch"))
+        {
+            IsCrouching = false;
+        }
+    }
+
 }
