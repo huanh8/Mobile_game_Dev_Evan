@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,10 +11,14 @@ public class PlayerController : MonoBehaviour
     private IMovementInput movementInput;//Interface for mobile input
     private CheckGround checkGround;
     [Range(0, 20)][SerializeField] private float movementSpeed = 8f;
+    [Range(0, 20)][SerializeField] private float dashSpeed = 5f;
     [Range(0, 15)][SerializeField] private float jumpSpeed = 5f;
     private PlayerAttack playerAttack;
-    private CapsuleCollider2D headCollider;
+
     //get collider for head
+
+    [Range(0, 1)][SerializeField] private float dashTime = 0.5f;
+    float nextDash = 0;
 
     void Awake()
     {
@@ -23,17 +28,19 @@ public class PlayerController : MonoBehaviour
         movementInput = GetComponent<IMovementInput>();
         checkGround = GetComponent<CheckGround>();
         playerAttack = GetComponent<PlayerAttack>();
-        headCollider = GetComponent<CapsuleCollider2D>();
+
         //sbscript a onfire event to the player attack script and play attack animation
         movementInput.OnFireEvent += playerAttack.Attack;
         playerAttack.OnFireEventAnimation += playerAnimations.PlayerAttackAnimation;
+        movementInput.OnDashEvent += Dash;
     }
 
     void Update()
     {
         Jump();
         Move();
-        Couch();
+        Crouch();
+
     }
     private void Move()
     {   //play walk animation
@@ -53,10 +60,18 @@ public class PlayerController : MonoBehaviour
             playerMovement.PlayerJump(jumpSpeed);
         }
     }
-    private void Couch()
+    private void Crouch()
     {
-        headCollider.enabled = !movementInput.IsCrouching;
-        playerAnimations.PlayerCrouch(movementInput.IsCrouching);
-        playerMovement.SetCrouch(movementInput.IsCrouching);
+        playerAnimations.PlayerCrouchAnimation(movementInput.IsCrouching);
     }
+    private void Dash()
+    {
+        if (Time.time >= nextDash)
+        {
+            playerAnimations.PlayerDashAnimation();
+            StartCoroutine(playerMovement.DashPlayer(movementInput.MovementInputVector, dashSpeed, dashTime));
+            nextDash = Time.time + dashTime;
+        }
+    }
+
 }

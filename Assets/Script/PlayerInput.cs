@@ -15,8 +15,9 @@ public class PlayerInput : MonoBehaviour, IMovementInput
     void Update()
     {   
         GetCouchInput();
-        GetMovementInput();
         GetJumpInput();
+        GetDashInput();
+        GetMovementInput();
         GetFireInput();
     }
 
@@ -48,5 +49,11 @@ public class PlayerInput : MonoBehaviour, IMovementInput
             IsCrouching = false;
         }
     }
-
+    private void GetDashInput()
+    {
+        if (IsCrouching && IsJumping)
+        {
+            OnDashEvent?.Invoke();
+        }
+    }
 }
