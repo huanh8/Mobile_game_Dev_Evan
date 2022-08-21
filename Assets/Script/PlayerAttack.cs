@@ -10,6 +10,8 @@ public class PlayerAttack : MonoBehaviour
     public LayerMask whatIsEnemies;
     [Range(0, 1)][SerializeField] private float attackSpeed = 0.5f;
     float nextAttack = 0;
+    public GameObject attackEffect;
+    [SerializeField] private int attackDamage = 20;
     public event Action OnFireEventAnimation;
     void Start()
     {
@@ -26,8 +28,10 @@ public class PlayerAttack : MonoBehaviour
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, whatIsEnemies);
             foreach (Collider2D enemy in hitEnemies)
             {
-                //enemy.GetComponent<Enemy>().TakeDamage(1);
+                enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
                 Debug.Log("Attack enemy");
+                GameObject effect = Instantiate(attackEffect, enemy.transform.position, Quaternion.identity);
+                Destroy(effect, 0.5f);
             }
         }
     }
