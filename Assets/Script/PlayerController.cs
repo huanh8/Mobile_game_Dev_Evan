@@ -10,15 +10,10 @@ public class PlayerController : MonoBehaviour
     private FlipPlayer flipPlayer;
     private IMovementInput movementInput;//Interface for mobile input
     private CheckGround checkGround;
-    [Range(0, 20)][SerializeField] private float movementSpeed = 8f;
-    [Range(0, 20)][SerializeField] private float dashSpeed = 5f;
-    [Range(0, 15)][SerializeField] private float jumpSpeed = 5f;
+
     private PlayerAttack playerAttack;
 
     //get collider for head
-
-    [Range(0, 1)][SerializeField] private float dashTime = 0.5f;
-    float nextDash = 0;
 
     void Awake()
     {
@@ -40,13 +35,12 @@ public class PlayerController : MonoBehaviour
         Jump();
         Move();
         Crouch();
-
     }
     private void Move()
     {   //play walk animation
         playerAnimations.PlayWalkAnimation(movementInput.Horizontal);
         //movePlayer
-        playerMovement.MovePlayer(movementInput.MovementInputVector, movementSpeed);
+        playerMovement.MovePlayer(movementInput.MovementInputVector);
         //flip player
         flipPlayer.Filp(movementInput.Horizontal);
     }
@@ -57,7 +51,7 @@ public class PlayerController : MonoBehaviour
 
         if (checkGround.IsGrounded() && movementInput.IsJumping)
         {
-            playerMovement.PlayerJump(jumpSpeed);
+            playerMovement.PlayerJump();
         }
     }
     private void Crouch()
@@ -66,12 +60,8 @@ public class PlayerController : MonoBehaviour
     }
     private void Dash()
     {
-        if (Time.time >= nextDash)
-        {
-            playerAnimations.PlayerDashAnimation();
-            StartCoroutine(playerMovement.DashPlayer(movementInput.MovementInputVector, dashSpeed, dashTime));
-            nextDash = Time.time + dashTime;
-        }
+        playerMovement.PlayerCanDash(movementInput.MovementInputVector);
+        playerAnimations.PlayerDashAnimation(playerMovement.IsDashing);
     }
 
 }

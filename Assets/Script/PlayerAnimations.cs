@@ -5,10 +5,15 @@ using UnityEngine;
 public class PlayerAnimations : MonoBehaviour
 {
     private Animator animator;
+    private Animator effectAnimoter;
 
     void Start()
     {
+        //get animator from windEffect
         animator = GetComponent<Animator>();
+        //get animator from child
+        effectAnimoter = transform.GetChild(1).GetComponent<Animator>();
+        effectAnimoter.enabled = false;
     }
     public void PlayWalkAnimation(float horizontal)
     {
@@ -20,15 +25,20 @@ public class PlayerAnimations : MonoBehaviour
     }
     //attack animation  and attack animation     
     public void PlayerAttackAnimation()
-    {  
-        animator.SetTrigger("Attack");      
+    {
+        animator.SetTrigger("Attack");
     }
     public void PlayerCrouchAnimation(bool isCrouching)
     {
         animator.SetBool("IsCrouching", isCrouching);
     }
-    public void PlayerDashAnimation()
+    public void PlayerDashAnimation(bool IsDashing)
     {
-        animator.SetTrigger("Dash");
+        if (IsDashing)
+        {
+            animator.SetTrigger("Dash");
+            effectAnimoter.enabled = true;
+            effectAnimoter.SetTrigger("DashingWind");
+        }
     }
 }
