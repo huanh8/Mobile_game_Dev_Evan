@@ -10,8 +10,8 @@ public class PlayerController : MonoBehaviour
     private FlipPlayer flipPlayer;
     private IMovementInput movementInput;//Interface for mobile input
     private CheckGround checkGround;
-
     private PlayerAttack playerAttack;
+    private Health playerHealth;
 
     //get collider for head
 
@@ -23,15 +23,17 @@ public class PlayerController : MonoBehaviour
         movementInput = GetComponent<IMovementInput>();
         checkGround = GetComponent<CheckGround>();
         playerAttack = GetComponent<PlayerAttack>();
+        playerHealth = GetComponent<Health>();
 
         //sbscript a onfire event to the player attack script and play attack animation
         movementInput.OnFireEvent += playerAttack.Attack;
-        playerAttack.OnFireEventAnimation += playerAnimations.PlayerAttackAnimation;
+        // dash event
         movementInput.OnDashEvent += Dash;
     }
 
     void Update()
     {
+        checkeHealth();
         Jump();
         Move();
         Crouch();
@@ -62,6 +64,10 @@ public class PlayerController : MonoBehaviour
     {
         playerMovement.PlayerCanDash(movementInput.MovementInputVector);
         playerAnimations.PlayerDashAnimation(playerMovement.IsDashing);
+    }
+    private void checkeHealth()
+    {
+        enabled = playerHealth.CurrentHealth > 0;
     }
 
 }
