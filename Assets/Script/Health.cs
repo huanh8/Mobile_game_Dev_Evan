@@ -18,14 +18,12 @@ public class Health : MonoBehaviour
     public void TakeDamage(int damage)
     {
         CurrentHealth -= damage;
-        Debug.Log("Take damage");
         animator.SetTrigger("isHurt");
         if (CurrentHealth <= 0)
             Die();
     }
     void Die()
     {
-        Debug.Log("Dead");
         animator.SetBool("isDead", true);
         GetComponent<BoxCollider2D>().enabled = false;
         this.enabled = false;

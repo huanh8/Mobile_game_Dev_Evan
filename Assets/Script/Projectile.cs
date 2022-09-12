@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float speed = 1f;
     private bool hit;
     private float direction;
-    [SerializeField] private float lifeTime = 5f;
+    [SerializeField] private float lifeTime = 4f;
     private float lifeTimer;
     [SerializeField] private int damage = 10;
 
