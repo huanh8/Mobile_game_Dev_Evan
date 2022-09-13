@@ -32,7 +32,7 @@ public abstract class Enemy : MonoBehaviour
     }
     void Update()
     {
-        Attack();  
+        Attack();
     }
     protected void Attack()
     {
@@ -59,7 +59,10 @@ public abstract class Enemy : MonoBehaviour
         new Vector3(boxCollider.bounds.size.x * attackRange, boxCollider.bounds.size.y, boxCollider.bounds.size.z),
         0f, Vector2.left, 0, whatIsPlayer);
         if (hit.collider != null)
+        {
             playerHealth = hit.collider.GetComponent<Health>();
+        }
+
         return hit.collider != null;
     }
     protected void OnDrawGizmos()
@@ -68,8 +71,8 @@ public abstract class Enemy : MonoBehaviour
         Gizmos.DrawWireCube(boxCollider.bounds.center + transform.right * attackRange * -transform.localScale.x * colliderDistance,
          new Vector3(boxCollider.bounds.size.x * attackRange, boxCollider.bounds.size.y, boxCollider.bounds.size.z));
     }
-    public abstract void AttckType();
-    protected void DamagePlayer()
+
+    protected virtual void DamagePlayer()
     {
         //Damage player
         if (EnemyInSight())

@@ -5,8 +5,4 @@ using System;
 
 public class MeleeEnemy : Enemy
 {
-    public override void AttckType()
-    {
-        DamagePlayer();
-    }
 }

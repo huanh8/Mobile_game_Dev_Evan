@@ -9,6 +9,7 @@ public interface IMovementInput
     float Horizontal { get; }
     bool IsCrouching { get; }
     bool IsJumping { get; }
+    bool IsBlocking { get; }
 
     event Action OnFireEvent;
     event Action OnDashEvent;
