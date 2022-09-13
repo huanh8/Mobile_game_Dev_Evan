@@ -5,6 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public int CurrentHealth { get; private set; }
+    public bool BlockingHealth { get; private set; }
     private Animator animator;
     [SerializeField] private int maxHealth = 100;
 
@@ -17,6 +18,7 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (BlockingHealth) return;
         CurrentHealth -= damage;
         animator.SetTrigger("isHurt");
         if (CurrentHealth <= 0)
@@ -29,4 +31,9 @@ public class Health : MonoBehaviour
         this.enabled = false;
         Destroy(gameObject, 3f);
     }
+    public void SetBlock(bool isBlocking)
+    {
+        BlockingHealth = isBlocking;
+    }
+
 }

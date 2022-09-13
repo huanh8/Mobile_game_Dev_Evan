@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private CheckGround checkGround;
     private PlayerAttack playerAttack;
     private Health playerHealth;
+    public Transform blockPoint;
 
     //get collider for head
 
@@ -24,7 +25,7 @@ public class PlayerController : MonoBehaviour
         checkGround = GetComponent<CheckGround>();
         playerAttack = GetComponent<PlayerAttack>();
         playerHealth = GetComponent<Health>();
-
+        blockPoint = transform.GetChild(1);
         //sbscript a onfire event to the player attack script and play attack animation
         movementInput.OnFireEvent += playerAttack.Attack;
         // dash event
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviour
         Jump();
         Move();
         Crouch();
+        Blocking();
     }
     private void Move()
     {   //play walk animation
@@ -62,12 +64,33 @@ public class PlayerController : MonoBehaviour
     }
     private void Dash()
     {
-        playerMovement.PlayerCanDash(movementInput.MovementInputVector);
-        playerAnimations.PlayerDashAnimation(playerMovement.IsDashing);
+        if (checkGround.IsGrounded())
+        {
+            playerMovement.PlayerCanDash(movementInput.MovementInputVector);
+            playerAnimations.PlayerDashAnimation(playerMovement.IsDashing);
+        }
     }
     private void checkeHealth()
     {
         enabled = playerHealth.CurrentHealth > 0;
+    }
+
+    private void Blocking()
+    {
+
+        if (movementInput.IsBlocking)
+        {
+            playerAnimations.PlayerBlockAnimation(true);
+            playerMovement.MovePlayer(Vector2.zero);
+            blockPoint.gameObject.SetActive(true);
+            playerHealth.SetBlock(true);       
+        }
+        else
+        {
+            playerAnimations.PlayerBlockAnimation(false);
+            blockPoint.gameObject.SetActive(false);
+            playerHealth.SetBlock(false);
+        }
     }
 
 }

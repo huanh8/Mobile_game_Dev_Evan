@@ -12,7 +12,7 @@ public class PlayerAnimations : MonoBehaviour
         //get animator from windEffect
         animator = GetComponent<Animator>();
         //get animator from child
-        effectAnimoter = transform.GetChild(1).GetComponent<Animator>();
+        effectAnimoter = transform.GetChild(2).GetComponent<Animator>();
         effectAnimoter.enabled = false;
     }
     public void PlayWalkAnimation(float horizontal)
@@ -28,6 +28,10 @@ public class PlayerAnimations : MonoBehaviour
     {
         animator.SetTrigger("Attack");
     }
+    public void PlayerShootingAnimation()
+    {
+        animator.SetTrigger("Shooting");
+    }
     public void PlayerCrouchAnimation(bool isCrouching)
     {
         animator.SetBool("IsCrouching", isCrouching);
@@ -40,5 +44,9 @@ public class PlayerAnimations : MonoBehaviour
             effectAnimoter.enabled = true;
             effectAnimoter.SetTrigger("DashingWind");
         }
+    }
+    public void PlayerBlockAnimation(bool IsBlocking)
+    {
+        animator.SetBool("IsBlocking", IsBlocking);
     }
 }

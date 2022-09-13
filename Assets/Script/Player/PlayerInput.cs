@@ -9,16 +9,18 @@ public class PlayerInput : MonoBehaviour, IMovementInput
     public float Horizontal { get; private set; }
     public bool IsCrouching { get; private set; }
     public bool IsJumping { get; private set; }
+    public bool IsBlocking { get; private set; }
     public event Action OnFireEvent;
     public event Action OnDashEvent;
 
     void Update()
-    {   
+    {
         GetCouchInput();
         GetJumpInput();
         GetDashInput();
         GetMovementInput();
         GetFireInput();
+        GetBlockInput();
     }
 
     private void GetMovementInput()
@@ -33,13 +35,13 @@ public class PlayerInput : MonoBehaviour, IMovementInput
 
     private void GetFireInput()
     {
-        if (Input.GetAxisRaw("Fire1") > 0)
+        if (Input.GetButtonDown("Fire1") && !IsBlocking && !IsCrouching)
         {
             OnFireEvent?.Invoke();
         }
     }
     private void GetCouchInput()
-    {   
+    {
         if (Input.GetButtonDown("Crouch"))
         {
             IsCrouching = true;
@@ -54,6 +56,17 @@ public class PlayerInput : MonoBehaviour, IMovementInput
         if (IsCrouching && IsJumping)
         {
             OnDashEvent?.Invoke();
+        }
+    }
+    private void GetBlockInput()
+    {
+        if (IsCrouching && Input.GetButtonDown("Fire1"))
+        {
+            IsBlocking = true;
+        }
+        else if (!IsCrouching || Input.GetButtonUp("Fire1"))
+        {
+            IsBlocking = false;
         }
     }
 }
