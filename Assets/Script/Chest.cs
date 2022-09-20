@@ -22,6 +22,7 @@ public class Chest : MonoBehaviour
             Debug.Log("Player got chest");
             anim.SetBool("OpenIt", true);
             boxCollider.enabled = false;
+            other.gameObject.GetComponent<Animator>().SetTrigger("IsWin");
         }
     }
 
