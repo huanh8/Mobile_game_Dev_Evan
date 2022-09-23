@@ -12,7 +12,7 @@ public class RangeEnemy : Enemy
     protected override void DamagePlayer()
     {
         float direction = transform.localScale.x;
-        FireBalls.ShootFireBall(projectiles, -direction, firePoint.position);
+        FireBalls.ShootFireBall(projectiles, -direction, firePoint.position, whatIsPlayer, tag);
     }
 
 }

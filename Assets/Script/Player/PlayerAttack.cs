@@ -48,7 +48,7 @@ public class PlayerAttack : MonoBehaviour
     void ShootFireBall()
     {
         float direction = transform.localScale.x;
-        FireBalls.ShootFireBall(projectiles, direction, attackPoint.position);
+        FireBalls.ShootFireBall(projectiles, direction, attackPoint.position, whatIsEnemies, tag);
     }
 
     private bool EnemyInSight()
@@ -67,7 +67,7 @@ public class PlayerAttack : MonoBehaviour
         Gizmos.DrawWireCube(boxCollider.bounds.center + transform.right * sightRange * -transform.localScale.x * colliderDistance,
          new Vector3(boxCollider.bounds.size.x * sightRange, boxCollider.bounds.size.y * sightRange, boxCollider.bounds.size.z));
     }
-    
+
     private void OnDrawGizmosSelected()
     {
         if (attackPoint == null)

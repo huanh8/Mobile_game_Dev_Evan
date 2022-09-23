@@ -78,4 +78,19 @@ public abstract class Enemy : MonoBehaviour
         if (EnemyInSight())
             playerHealth.TakeDamage(damage);
     }
+    protected void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            if (enemyHealth.CurrentHealth > 0)
+            {
+                collision.gameObject.GetComponent<Health>().TakeDamage(damage);
+                Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+                float pushForce = 3f;
+                Vector2 force = this.transform.position - collision.transform.position;
+                force.Normalize();
+                rb.AddForce(force * pushForce, ForceMode2D.Impulse);
+            }
+        }
+    }
 }

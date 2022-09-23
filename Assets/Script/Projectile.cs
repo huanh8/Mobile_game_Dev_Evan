@@ -12,6 +12,8 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float lifeTime = 4f;
     private float lifeTimer;
     [SerializeField] private int damage = 10;
+    private LayerMask whatIsEnemy;
+    private string tag;
 
     void Awake()
     {
@@ -32,12 +34,14 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D hitInfor)
     {
+        if (hitInfor.gameObject.tag == tag)
+            return;
         hit = true;
         CircleCollider.enabled = false;
         if (hitInfor.GetComponent<Health>())
-            hitInfor.GetComponent<Health>().TakeDamage(damage);
+            if(((1 << hitInfor.gameObject.layer) & whatIsEnemy) != 0)
+                hitInfor.GetComponent<Health>().TakeDamage(damage);
         animator.SetTrigger("explode");
-
     }
     public void SetDirection(float _direction)
     {
@@ -55,5 +59,10 @@ public class Projectile : MonoBehaviour
     void Deactivate()
     {
         gameObject.SetActive(false);
+    }
+    public void SetLayers(LayerMask _whatIsEnemy, string _tag)
+    {
+        whatIsEnemy = _whatIsEnemy;
+        tag = _tag;
     }
 }
