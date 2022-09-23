@@ -4,11 +4,12 @@ using UnityEngine;
 
 public static class FireBalls
 {
-    public static void ShootFireBall(List<GameObject> projectiles, float direction, Vector3 attackPoint )
+    public static void ShootFireBall(List<GameObject> projectiles, float direction, Vector3 attackPoint, LayerMask whatIsPlayer, string tag)
     { 
         int idx = FindIt(projectiles);
         projectiles[idx].transform.position = attackPoint;
         projectiles[idx].GetComponent<Projectile>().SetDirection(direction);
+        projectiles[idx].GetComponent<Projectile>().SetLayers(whatIsPlayer , tag);
     }
     private static int FindIt(List<GameObject> projectiles)
     {

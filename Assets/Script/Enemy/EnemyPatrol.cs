@@ -65,4 +65,5 @@ public class EnemyPatrol : MonoBehaviour
             movingLeft = !movingLeft;
         }
     }
+
 }
