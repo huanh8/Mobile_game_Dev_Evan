@@ -28,6 +28,14 @@ public class PlayerAnimations : MonoBehaviour
     {
         animator.SetTrigger("Attack");
     }
+    public void PlayerIsHurtAnimation()
+    {
+        animator.SetTrigger("IsHurt");
+    }
+    public void PlayerIsDeadAnimation()
+    {
+        animator.SetBool("IsDead", true);
+    }
     public void PlayerShootingAnimation()
     {
         animator.SetTrigger("Shooting");

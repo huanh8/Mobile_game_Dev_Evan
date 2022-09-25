@@ -13,7 +13,7 @@ public class Projectile : MonoBehaviour
     private float lifeTimer;
     [SerializeField] private int damage = 10;
     private LayerMask whatIsEnemy;
-    private string tag;
+    private LayerMask gameObjectLayer;
 
     void Awake()
     {
@@ -34,13 +34,14 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D hitInfor)
     {
-        if (hitInfor.gameObject.tag == tag)
-            return;
+        if (hitInfor.gameObject.layer == gameObjectLayer) return; // same layer will not hit
         hit = true;
         CircleCollider.enabled = false;
-        if (hitInfor.GetComponent<Health>())
-            if(((1 << hitInfor.gameObject.layer) & whatIsEnemy) != 0)
-                hitInfor.GetComponent<Health>().TakeDamage(damage);
+        Health health = hitInfor.GetComponent<Health>();
+        if (health != null && health.CurrentHealth > 0)
+            // check if the hit object is in the whatIsEnemy layer
+            if (((1 << hitInfor.gameObject.layer) & whatIsEnemy) != 0)
+                hitInfor.GetComponent<Health>().TakeDamage(damage, transform.gameObject);
         animator.SetTrigger("explode");
     }
     public void SetDirection(float _direction)
@@ -60,9 +61,9 @@ public class Projectile : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-    public void SetLayers(LayerMask _whatIsEnemy, string _tag)
+    public void SetLayers(LayerMask _whatIsEnemy, LayerMask _gameObjectLayer)
     {
         whatIsEnemy = _whatIsEnemy;
-        tag = _tag;
+        gameObjectLayer = _gameObjectLayer;
     }
 }

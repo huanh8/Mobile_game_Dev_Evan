@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
             playerAnimations.PlayerBlockAnimation(true);
             playerMovement.MovePlayer(Vector2.zero);
             blockPoint.gameObject.SetActive(true);
-            playerHealth.SetBlock(true);       
+            playerHealth.SetBlock(true);
         }
         else
         {

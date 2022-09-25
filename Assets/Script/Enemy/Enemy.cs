@@ -22,7 +22,8 @@ public abstract class Enemy : MonoBehaviour
     protected Health playerHealth;
     protected Health enemyHealth;
     protected EnemyPatrol enemyPatrol;
-
+    [SerializeField] protected float pushForce = 8f;
+    [Range(0, 1)][SerializeField] protected float pushDelay = 0.2f;
 
     void Awake()
     {
@@ -41,12 +42,12 @@ public abstract class Enemy : MonoBehaviour
 
         nextAttack += Time.deltaTime;
         // Attack only when player is in range
-        if (EnemyInSight())
+        if (EnemyInSight() && playerHealth.CurrentHealth > 0)
         {
             if (nextAttack >= attackCooldown)
             {   //play attack animation
                 nextAttack = 0;
-                animator.SetTrigger("attack");
+                animator.SetTrigger("Attack");
             }
         }
         if (enemyPatrol != null && enemyHealth.CurrentHealth >= 1)
@@ -75,22 +76,36 @@ public abstract class Enemy : MonoBehaviour
     protected virtual void DamagePlayer()
     {
         //Damage player
-        if (EnemyInSight())
-            playerHealth.TakeDamage(damage);
+        playerHealth.TakeDamage(damage, gameObject);
+
     }
-    protected void OnCollisionEnter2D(Collision2D collision)
+    protected void OnCollisionEnter2D(Collision2D hitInfor)
     {
-        if (collision.gameObject.tag == "Player")
+
+        if (((1 << hitInfor.gameObject.layer) & whatIsPlayer) != 0)
         {
-            if (enemyHealth.CurrentHealth > 0)
-            {
-                collision.gameObject.GetComponent<Health>().TakeDamage(damage);
-                Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
-                float pushForce = 3f;
-                Vector2 force = this.transform.position - collision.transform.position;
-                force.Normalize();
-                rb.AddForce(force * pushForce, ForceMode2D.Impulse);
-            }
+            Health h = hitInfor.gameObject.GetComponent<Health>();
+            if (h == null || h.IsDead) return;
+            h.TakeDamage(damage, transform.gameObject);
+
+            Rigidbody2D rb = hitInfor.gameObject.GetComponent<Rigidbody2D>();
+            PlayerController p = hitInfor.gameObject.GetComponent<PlayerController>();
+            p.enabled = false;
+            Vector2 force = (hitInfor.transform.position - transform.position).normalized;
+            rb.AddForce(force * pushForce, ForceMode2D.Impulse);
+            //Mathf.Lerp(rb.velocity.x, 0, pushDelay);
+            //rb.velocity = force * pushForce;
+            StartCoroutine(Reset(rb, p));
         }
+    }
+    protected IEnumerator Reset(Rigidbody2D rb, PlayerController p)
+    {
+
+        yield return new WaitForSeconds(pushDelay);
+        rb.velocity = Vector2.zero;
+        yield return new WaitForSeconds(pushDelay);
+        p.enabled = true;
+        yield return new WaitForSeconds(pushDelay);
+
     }
 }

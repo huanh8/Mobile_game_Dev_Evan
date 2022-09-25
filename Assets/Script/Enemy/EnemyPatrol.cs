@@ -28,7 +28,7 @@ public class EnemyPatrol : MonoBehaviour
     }
     void OnDisable()
     {
-        animator.SetBool("isMoving", false);
+        animator.SetBool("IsMoving", false);
     }
     void Update()
     {
@@ -50,14 +50,14 @@ public class EnemyPatrol : MonoBehaviour
     }
     private void MoveInDirection(float _direction)
     {
-        animator.SetBool("isMoving", true);
+        animator.SetBool("IsMoving", true);
         enemy.transform.Translate(transform.right * _direction * Time.deltaTime);
         flipEnemy.Filp(-_direction);
     }
 
     void ChangeDirection()
     {
-        animator.SetBool("isMoving", false);
+        animator.SetBool("IsMoving", false);
         idleTimer += Time.deltaTime;
         if (idleTimer >= idleDuration)
         {
