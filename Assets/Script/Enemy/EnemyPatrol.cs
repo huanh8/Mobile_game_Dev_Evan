@@ -34,25 +34,32 @@ public class EnemyPatrol : MonoBehaviour
     {
         if (movingLeft)
         {
-            if (enemy.position.x >= leftEdge.position.x)
+            if (enemy.position.x > leftEdge.position.x)
             {
                 Vector2 direction = (leftEdge.position - enemy.position).normalized;
                 MoveInDirection(direction);
             }
 
             else
+            {
+                enemy.position = leftEdge.position;
                 ChangeDirection();
+            }
+
         }
         else
         {
-            if (enemy.position.x <= rightEdge.position.x)
+            if (enemy.position.x < rightEdge.position.x)
             {
                 Vector2 direction = (rightEdge.position - enemy.position).normalized;
                 MoveInDirection(direction);
             }
 
             else
+            {
+                enemy.position = rightEdge.position;
                 ChangeDirection();
+            }
         }
 
     }
@@ -65,6 +72,7 @@ public class EnemyPatrol : MonoBehaviour
 
     void ChangeDirection()
     {
+
         animator.SetBool("IsMoving", false);
         idleTimer += Time.deltaTime;
         if (idleTimer >= idleDuration)
