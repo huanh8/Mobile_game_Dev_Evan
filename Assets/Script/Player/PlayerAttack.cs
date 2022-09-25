@@ -38,7 +38,7 @@ public class PlayerAttack : MonoBehaviour
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, whatIsEnemies);
             foreach (Collider2D enemy in hitEnemies)
             {
-                enemy.GetComponent<Health>().TakeDamage(attackDamage);
+                enemy.GetComponent<Health>().TakeDamage(attackDamage, transform.gameObject);
                 GameObject effect = Instantiate(attackEffect, enemy.transform.position, Quaternion.identity);
                 Destroy(effect, 0.5f);
             }
@@ -48,7 +48,7 @@ public class PlayerAttack : MonoBehaviour
     void ShootFireBall()
     {
         float direction = transform.localScale.x;
-        FireBalls.ShootFireBall(projectiles, direction, attackPoint.position, whatIsEnemies, tag);
+        FireBalls.ShootFireBall(projectiles, direction, attackPoint.position, whatIsEnemies, gameObject.layer);
     }
 
     private bool EnemyInSight()
