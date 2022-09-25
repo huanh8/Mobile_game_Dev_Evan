@@ -11,9 +11,11 @@ public class Health : MonoBehaviour
     [SerializeField] private int maxHealth = 100;
     public UnityEvent<GameObject> OnHitEvent, OnDieEvent;
     public bool IsDead { get; private set; }
+    [SerializeField] private float destroyDelayTime = 3f;
     // Start is called before the first frame update
     void Awake()
-    {   IsDead = false;
+    {
+        IsDead = false;
         CurrentHealth = maxHealth;
         animator = GetComponent<Animator>();
     }
@@ -35,7 +37,7 @@ public class Health : MonoBehaviour
         OnDieEvent.Invoke(sender);
         GetComponent<BoxCollider2D>().enabled = false;
         IsDead = true;
-        Destroy(gameObject, 10f);
+        Destroy(gameObject, destroyDelayTime);
     }
     public void SetBlock(bool isBlocking)
     {
