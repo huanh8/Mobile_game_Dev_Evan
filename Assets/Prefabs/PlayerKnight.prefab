@@ -325,6 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 495ab215a3040064d964a7f7d0ee60de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockPoint: {fileID: 0}
 --- !u!114 &4097302494679119907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,6 +441,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1000
+  OnHitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDieEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  destroyDelayTime: 3
 --- !u!1001 &4040885670310276038
 PrefabInstance:
   m_ObjectHideFlags: 0

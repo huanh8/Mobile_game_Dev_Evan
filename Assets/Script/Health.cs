@@ -7,9 +7,9 @@ public class Health : MonoBehaviour
 {
     public int CurrentHealth { get; private set; }
     public bool BlockingHealth { get; private set; }
-    private Animator animator;
     [SerializeField] private int maxHealth = 100;
-    public UnityEvent<GameObject> OnHitEvent, OnDieEvent;
+    public UnityEvent<GameObject> OnHitEvent, OnDieEvent, OnBlockEvent; 
+    //public UnityEvent OnHitEvent, OnDieEvent;
     public bool IsDead { get; private set; }
     [SerializeField] private float destroyDelayTime = 3f;
     // Start is called before the first frame update
@@ -17,17 +17,24 @@ public class Health : MonoBehaviour
     {
         IsDead = false;
         CurrentHealth = maxHealth;
-        animator = GetComponent<Animator>();
     }
 
-    public void TakeDamage(int damage, GameObject sender)
+    // pass bool isTouching false by default
+    public void TakeDamage(int damage, GameObject sender, bool isTouching = false)
     {
         if (IsDead) return;
-        if (BlockingHealth) return;
-        if (sender.layer == gameObject.layer) return; // same layer will not hit
-
+        if (BlockingHealth){
+            OnBlockEvent.Invoke(sender);
+            return;
+        } 
+        if (isTouching) OnBlockEvent.Invoke(sender);;
+        // same layer will not hit
+        if (sender.layer == gameObject.layer) { 
+            Debug.Log("same layer"); 
+            return; 
+            } 
         CurrentHealth -= damage;
-        // trigger hit animation or other events
+        // trigger animation or other events
         OnHitEvent.Invoke(sender);
         if (CurrentHealth <= 0) Die(sender);
     }

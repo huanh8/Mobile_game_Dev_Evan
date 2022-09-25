@@ -5,15 +5,14 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour
 {
     [Header("Attack Parameters")]
-    [SerializeField] protected float attackCooldown;
-    [SerializeField] protected int damage;
-    [SerializeField] protected float attackRange;
+    [SerializeField] protected float attackCooldown = 1.5f;
+    [SerializeField] protected int damage = 10;
+    [SerializeField] protected float attackRange = 1f;
     protected float nextAttack = float.MaxValue;
 
     [Header("Collider Parameters")]
-    [SerializeField] protected float colliderDistance;
+    [SerializeField] protected float colliderDistance = 1f;
     public BoxCollider2D boxCollider;
-
 
     [Header("Player Layer")]
     [SerializeField] protected LayerMask whatIsPlayer;
@@ -22,15 +21,15 @@ public abstract class Enemy : MonoBehaviour
     protected Health playerHealth;
     protected Health enemyHealth;
     protected EnemyPatrol enemyPatrol;
-    [SerializeField] protected float pushForce = 8f;
-    [Range(0, 1)][SerializeField] protected float pushDelay = 0.2f;
 
     void Awake()
     {
+        boxCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
         enemyPatrol = GetComponentInParent<EnemyPatrol>();
-        enemyHealth = GetComponentInParent<Health>();
+        enemyHealth = GetComponent<Health>();
     }
+
     void Update()
     {
         Attack();
@@ -68,6 +67,7 @@ public abstract class Enemy : MonoBehaviour
     }
     protected void OnDrawGizmos()
     {
+        if (boxCollider == null) return;
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(boxCollider.bounds.center + transform.right * attackRange * -transform.localScale.x * colliderDistance,
          new Vector3(boxCollider.bounds.size.x * attackRange, boxCollider.bounds.size.y, boxCollider.bounds.size.z));
@@ -76,36 +76,25 @@ public abstract class Enemy : MonoBehaviour
     protected virtual void DamagePlayer()
     {
         //Damage player
-        playerHealth.TakeDamage(damage, gameObject);
+        if (playerHealth != null)
+            playerHealth.TakeDamage(damage, transform.gameObject);
 
     }
     protected void OnCollisionEnter2D(Collision2D hitInfor)
     {
-
-        if (((1 << hitInfor.gameObject.layer) & whatIsPlayer) != 0)
+        if (((1 << hitInfor.gameObject.layer) & whatIsPlayer) != 0)// check player layer => touch and damage player
         {
             Health h = hitInfor.gameObject.GetComponent<Health>();
             if (h == null || h.IsDead) return;
-            h.TakeDamage(damage, transform.gameObject);
-
-            Rigidbody2D rb = hitInfor.gameObject.GetComponent<Rigidbody2D>();
-            PlayerController p = hitInfor.gameObject.GetComponent<PlayerController>();
-            p.enabled = false;
-            Vector2 force = (hitInfor.transform.position - transform.position).normalized;
-            rb.AddForce(force * pushForce, ForceMode2D.Impulse);
-            //Mathf.Lerp(rb.velocity.x, 0, pushDelay);
-            //rb.velocity = force * pushForce;
-            StartCoroutine(Reset(rb, p));
+            h.TakeDamage(damage, transform.gameObject, true);
         }
     }
-    protected IEnumerator Reset(Rigidbody2D rb, PlayerController p)
+    public void IsHurtAnimation()
     {
-
-        yield return new WaitForSeconds(pushDelay);
-        rb.velocity = Vector2.zero;
-        yield return new WaitForSeconds(pushDelay);
-        p.enabled = true;
-        yield return new WaitForSeconds(pushDelay);
-
+        animator.SetTrigger("IsHurt");
+    }
+    public void IsDeadAnimation()
+    {
+        animator.SetBool("IsDead", true);
     }
 }
