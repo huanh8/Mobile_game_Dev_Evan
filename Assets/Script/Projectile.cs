@@ -34,6 +34,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D hitInfor)
     {
+
         if (hitInfor.gameObject.layer == gameObjectLayer) return; // same layer will not hit
         hit = true;
         CircleCollider.enabled = false;
