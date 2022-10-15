@@ -5801,8 +5801,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: DOSIS-MEDIUM SDF Material
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
-  m_ValidKeywords:
-  - GLOW_ON
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -5844,6 +5843,7 @@ Material:
     - _BumpFace: 0
     - _BumpOutline: 0
     - _ColorMask: 15
+    - _CullMode: 0
     - _Diffuse: 0.5
     - _FaceDilate: 0
     - _FaceUVSpeedX: 0
@@ -5868,6 +5868,7 @@ Material:
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
+    - _Sharpness: 0
     - _SpecularPower: 2
     - _Stencil: 0
     - _StencilComp: 8

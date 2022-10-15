@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Chest : MonoBehaviour
 {
     private Animator anim;
     private BoxCollider2D boxCollider;
-    // Start is called before the first frame update
+    public UnityEvent OnOpen;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -23,6 +24,7 @@ public class Chest : MonoBehaviour
             anim.SetBool("OpenIt", true);
             boxCollider.enabled = false;
             other.gameObject.GetComponent<Animator>().SetTrigger("IsWin");
+            OnOpen.Invoke();
         }
     }
 
