@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
+    public HealthBar healthBar;
     public int CurrentHealth { get; private set; }
     public bool BlockingHealth { get; private set; }
     [SerializeField] private int maxHealth = 100;
@@ -17,6 +18,8 @@ public class Health : MonoBehaviour
     {
         IsDead = false;
         CurrentHealth = maxHealth;
+        if(healthBar != null)
+            healthBar.SetMaxHealth(maxHealth);
     }
 
     // pass bool isTouching false by default
@@ -33,7 +36,11 @@ public class Health : MonoBehaviour
             Debug.Log("same layer"); 
             return; 
             } 
+
         CurrentHealth -= damage;
+        if (healthBar != null)
+            healthBar.SetHealth(CurrentHealth);
+
         // trigger animation or other events
         OnHitEvent.Invoke(sender);
         if (CurrentHealth <= 0) Die(sender);
