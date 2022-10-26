@@ -13,11 +13,13 @@ public class PlayerController : MonoBehaviour
     private PlayerAttack playerAttack;
     private Health playerHealth;
     public Transform blockPoint;
+    private BoxCollider2D feetCollider;
 
     //get collider for head
 
     void Awake()
     {
+        feetCollider = GetComponent<BoxCollider2D>();
         playerMovement = GetComponent<PlayerMovement>();
         playerAnimations = GetComponent<PlayerAnimations>();
         flipPlayer = GetComponent<FlipPlayer>();
@@ -27,9 +29,9 @@ public class PlayerController : MonoBehaviour
         playerHealth = GetComponent<Health>();
         blockPoint = transform.GetChild(1);
         //sbscript a onfire event to the player attack script and play attack animation
-        movementInput.OnFireEvent += playerAttack.Attack;
+        //movementInput.OnFireEvent += playerAttack.Attack;
         // dash event
-        movementInput.OnDashEvent += Dash;
+        //movementInput.OnDashEvent += Dash;
     }
 
     void Update()
@@ -92,5 +94,26 @@ public class PlayerController : MonoBehaviour
             playerHealth.SetBlock(false);
         }
     }
+    void OnDisable()
+    {
+        movementInput.OnFireEvent -= playerAttack.Attack;
+        movementInput.OnDashEvent -= Dash;
 
+        // set collider physics material to HasFriction
+        if (feetCollider != null)
+        {
+            feetCollider.sharedMaterial = Resources.Load<PhysicsMaterial2D>("HasFriction");
+        }
+
+        playerAnimations.PlayWalkAnimation(0f);
+    }
+    void OnEnable()
+    {
+        movementInput.OnFireEvent += playerAttack.Attack;
+        movementInput.OnDashEvent += Dash;
+        if (feetCollider != null)
+        {
+            feetCollider.sharedMaterial = Resources.Load<PhysicsMaterial2D>("NoFriction");
+        }
+    }
 }
