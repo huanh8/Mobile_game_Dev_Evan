@@ -8,7 +8,7 @@ public class Health : MonoBehaviour
     public HealthBar healthBar;
     public int CurrentHealth { get; private set; }
     public bool BlockingHealth { get; private set; }
-    [SerializeField] private int maxHealth = 100;
+    public int maxHealth = 100;
     public UnityEvent<GameObject> OnHitEvent, OnDieEvent, OnBlockEvent; 
     //public UnityEvent OnHitEvent, OnDieEvent;
     public bool IsDead { get; private set; }
