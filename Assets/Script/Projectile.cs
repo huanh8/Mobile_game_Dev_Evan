@@ -34,6 +34,8 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D hitInfor)
     {
+        // ignore the layer trigger
+        Physics2D.IgnoreLayerCollision(10, 11);// 10 is the projectile layer, 11 is the trigger layer
 
         if (hitInfor.gameObject.layer == gameObjectLayer) return; // same layer will not hit
         hit = true;
