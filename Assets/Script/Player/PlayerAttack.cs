@@ -6,7 +6,7 @@ using System;
 public class PlayerAttack : MonoBehaviour
 {
     private Animator animator;
-    private Transform attackPoint;
+    public Transform attackPoint;
     [Range(0, 1)][SerializeField] private float attackRange = 0.8f;
     public LayerMask whatIsEnemies;
     [Range(0, 1)][SerializeField] private float attacCooldown = 0.5f;
@@ -20,7 +20,6 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
-        attackPoint = transform.GetChild(0);
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
     }
@@ -61,6 +60,12 @@ public class PlayerAttack : MonoBehaviour
         return hit.collider != null;
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+            return;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -68,10 +73,5 @@ public class PlayerAttack : MonoBehaviour
          new Vector3(boxCollider.bounds.size.x * sightRange, boxCollider.bounds.size.y * sightRange, boxCollider.bounds.size.z));
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        if (attackPoint == null)
-            return;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-    }
+
 }

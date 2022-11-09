@@ -17,9 +17,9 @@ TagManager:
   - Path
   - Enemy
   - Player
-  - 
-  - 
-  - 
+  - Boos
+  - Projectile
+  - Trigger
   - 
   - 
   - 

@@ -6,12 +6,12 @@ public class BossAttack : MonoBehaviour
 {
     public int attackDamage = 20;
     public int enragedAttackDamage = 40;
-    public Vector3 attackOffset;
     public float attackRange = 0.5f;
     public LayerMask attckLayer;
     private bool isEnrange = false;
     private Health health;
     private Animator animator;
+    public Transform attackPoint;
     void Start()
     {
         health = GetComponent<Health>();
@@ -30,22 +30,18 @@ public class BossAttack : MonoBehaviour
         // check if the boss is isEnrange
         int damage = isEnrange ? enragedAttackDamage : attackDamage;
 
-        Vector3 pos = transform.position;
-        pos += transform.right * attackOffset.x;
-        pos += transform.up * attackOffset.y;
-        Collider2D hitEnemie = Physics2D.OverlapCircle(pos, attackRange, attckLayer);
+    
+        Collider2D hitEnemie = Physics2D.OverlapCircle(attackPoint.position, attackRange, attckLayer);
         if (hitEnemie != null)
         {
             hitEnemie.GetComponent<Health>().TakeDamage(damage, transform.gameObject);
         }
     }
-    void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        Vector3 pos = transform.position;
-        pos += transform.right * attackOffset.x;
-        pos += transform.up * attackOffset.y;
-        Gizmos.DrawWireSphere(pos, attackRange);
+        if (attackPoint == null)
+            return;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
 }

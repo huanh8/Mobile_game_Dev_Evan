@@ -56,13 +56,15 @@ public class PlayerController : MonoBehaviour
         playerAnimations.PlayerJumpAnimation(!checkGround.IsGrounded());
 
         if (checkGround.IsGrounded() && movementInput.IsJumping)
-        {
             playerMovement.PlayerJump();
-        }
+
+
+        
     }
     private void Crouch()
     {
         playerAnimations.PlayerCrouchAnimation(movementInput.IsCrouching);
+        playerMovement.PlayerCrouch(movementInput.IsCrouching);
     }
     private void Dash()
     {
@@ -101,9 +103,7 @@ public class PlayerController : MonoBehaviour
 
         // set collider physics material to HasFriction
         if (feetCollider != null)
-        {
-            feetCollider.sharedMaterial = Resources.Load<PhysicsMaterial2D>("HasFriction");
-        }
+            feetCollider.sharedMaterial = new PhysicsMaterial2D("HasFriction");
 
         playerAnimations.PlayWalkAnimation(0f);
     }
@@ -112,8 +112,7 @@ public class PlayerController : MonoBehaviour
         movementInput.OnFireEvent += playerAttack.Attack;
         movementInput.OnDashEvent += Dash;
         if (feetCollider != null)
-        {
-            feetCollider.sharedMaterial = Resources.Load<PhysicsMaterial2D>("NoFriction");
-        }
+            // set the physics material to NoFriction
+            feetCollider.sharedMaterial = new PhysicsMaterial2D("NoFriction");
     }
 }
