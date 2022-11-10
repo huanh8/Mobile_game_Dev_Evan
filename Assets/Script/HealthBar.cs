@@ -34,8 +34,6 @@ public class HealthBar : MonoBehaviour
     public void SetHeadIcon(Sprite sprite)
     {
         HeadIcon.sprite = sprite;
-        Debug.Log("set head icon");
-        Debug.Log(sprite.name);
     }
 
 }
