@@ -10,7 +10,6 @@ public class Trigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other);
         if (other.tag == "Player")
         {
             startTriggerEvent.Invoke();
@@ -18,7 +17,6 @@ public class Trigger : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log(other);
         if (other.tag == "Player")
         {
             afterTriggerEvent.Invoke();
