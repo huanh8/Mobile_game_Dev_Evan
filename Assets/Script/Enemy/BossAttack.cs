@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BossAttack : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class BossAttack : MonoBehaviour
     private Health health;
     private Animator animator;
     public Transform attackPoint;
+    [SerializeField] UnityEvent startTriggerEvent;
     void Start()
     {
         health = GetComponent<Health>();
@@ -22,6 +24,7 @@ public class BossAttack : MonoBehaviour
         if (health.CurrentHealth <= health.maxHealth / 2)
         {
             isEnrange = true;
+            startTriggerEvent.Invoke();
             animator.SetBool("IsEnraged", true);
         }
     }
@@ -30,7 +33,7 @@ public class BossAttack : MonoBehaviour
         // check if the boss is isEnrange
         int damage = isEnrange ? enragedAttackDamage : attackDamage;
 
-    
+
         Collider2D hitEnemie = Physics2D.OverlapCircle(attackPoint.position, attackRange, attckLayer);
         if (hitEnemie != null)
         {
@@ -42,6 +45,10 @@ public class BossAttack : MonoBehaviour
         if (attackPoint == null)
             return;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+    public void IsDead()
+    {
+        animator.SetBool("IsDead", true);
     }
 
 }

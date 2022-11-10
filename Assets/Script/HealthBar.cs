@@ -8,6 +8,7 @@ public class HealthBar : MonoBehaviour
     public Slider slider;
     public Gradient gradient;
     public Image fill;
+    public Image HeadIcon;
     public Animator animator;
     public void SetMaxHealth(int health)
     {
@@ -30,4 +31,11 @@ public class HealthBar : MonoBehaviour
     {
         animator.enabled = true;
     }
+    public void SetHeadIcon(Sprite sprite)
+    {
+        HeadIcon.sprite = sprite;
+        Debug.Log("set head icon");
+        Debug.Log(sprite.name);
+    }
+
 }

@@ -61,4 +61,13 @@ public class Health : MonoBehaviour
         BlockingHealth = isBlocking;
     }
 
+    public void Heal(int heal)
+    {
+        CurrentHealth += heal;
+        if (CurrentHealth > maxHealth)
+            CurrentHealth = maxHealth;
+        if (healthBar != null)
+            healthBar.SetHealth(CurrentHealth);
+    }
+
 }
