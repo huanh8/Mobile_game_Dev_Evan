@@ -8,6 +8,7 @@ public class Boss_movement : StateMachineBehaviour
     FlipPlayer flipBoss;
     Rigidbody2D rb;
     Health health;
+    Health playerHealth;
     public float speed = 2f;
     public float attackRange = 3f;
 
@@ -19,6 +20,7 @@ public class Boss_movement : StateMachineBehaviour
         flipBoss = animator.GetComponent<FlipPlayer>();
         rb = animator.GetComponent<Rigidbody2D>();
         health = animator.GetComponent<Health>();
+        playerHealth = player.GetComponent<Health>();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -26,6 +28,7 @@ public class Boss_movement : StateMachineBehaviour
     {
         if (player == null) return;
         if (health.IsDead) return;
+        if (playerHealth.IsDead) return;
         // move towards player
         Vector2 target = new Vector2(player.position.x, animator.transform.position.y);
         Vector2 newPos = Vector2.MoveTowards(animator.transform.position, target, speed * Time.fixedDeltaTime);

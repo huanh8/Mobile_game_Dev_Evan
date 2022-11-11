@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private Health playerHealth;
     public Transform blockPoint;
     private BoxCollider2D feetCollider;
-
+    public GameObject HealthBar;
     //get collider for head
 
     void Awake()
@@ -56,10 +56,11 @@ public class PlayerController : MonoBehaviour
         playerAnimations.PlayerJumpAnimation(!checkGround.IsGrounded());
 
         if (checkGround.IsGrounded() && movementInput.IsJumping)
+        {
+            AudioManager.instance.PlaySound(AudioManager.instance.JumpClip);
             playerMovement.PlayerJump();
+        }
 
-
-        
     }
     private void Crouch()
     {
@@ -70,6 +71,7 @@ public class PlayerController : MonoBehaviour
     {
         if (checkGround.IsGrounded())
         {
+            AudioManager.instance.PlaySound(AudioManager.instance.DashClip);
             playerMovement.PlayerCanDash(movementInput.MovementInputVector);
             playerAnimations.PlayerDashAnimation(playerMovement.IsDashing);
         }
@@ -115,4 +117,15 @@ public class PlayerController : MonoBehaviour
             // set the physics material to NoFriction
             feetCollider.sharedMaterial = new PhysicsMaterial2D("NoFriction");
     }
+    public void PlayerDeadEvent()
+    {
+        GameController.instance.GameOver();
+        enabled = false;
+    }
+    public void PlayerWinEvent()
+    {
+        GameController.instance.GameWin();
+        enabled = false;
+    }
+
 }

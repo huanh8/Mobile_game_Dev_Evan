@@ -46,14 +46,15 @@ public class PlayerMovement : MonoBehaviour
     public IEnumerator PlayerDashing(Vector2 movementVector)
     {
         IsDashing = true;
+
         headCollider.enabled = false;
         // ignore collision with enemies
-        Physics2D.IgnoreLayerCollision(7, 8, true); // 7 = player, 8 = enemies
-        //rb.AddForce(movementVector * dashSpeed, ForceMode2D.Impulse);
-        rb.velocity = new Vector2(movementVector.x * dashSpeed, rb.velocity.y);
+        Physics2D.IgnoreLayerCollision(8, 7, true); // 8 = player, 7 = enemy
+        rb.AddForce(movementVector * dashSpeed, ForceMode2D.Impulse);
+        //rb.velocity = new Vector2(movementVector.x * dashSpeed, rb.velocity.y);
         yield return new WaitForSeconds(dashingTime);
         IsDashing = false;
         headCollider.enabled = true;
-        Physics2D.IgnoreLayerCollision(7, 8, false);
+        Physics2D.IgnoreLayerCollision(8, 7, false);
     }
 }

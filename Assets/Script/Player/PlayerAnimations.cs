@@ -57,4 +57,8 @@ public class PlayerAnimations : MonoBehaviour
     {
         animator.SetBool("IsBlocking", IsBlocking);
     }
+    public void PlayerWonAnimation()
+    {
+        animator.SetBool("IsWon", true);
+    }
 }
