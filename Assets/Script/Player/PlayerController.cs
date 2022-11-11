@@ -16,7 +16,11 @@ public class PlayerController : MonoBehaviour
     private BoxCollider2D feetCollider;
     public GameObject HealthBar;
     //get collider for head
-
+    // canDash get = false by default private set
+  
+     public bool canDash = false;
+     public bool canBlock = false;
+  
     void Awake()
     {
         feetCollider = GetComponent<BoxCollider2D>();
@@ -69,7 +73,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Dash()
     {
-        if (checkGround.IsGrounded())
+        if (checkGround.IsGrounded()&& canDash)
         {
             AudioManager.instance.PlaySound(AudioManager.instance.DashClip);
             playerMovement.PlayerCanDash(movementInput.MovementInputVector);
@@ -84,7 +88,7 @@ public class PlayerController : MonoBehaviour
     private void Blocking()
     {
 
-        if (movementInput.IsBlocking)
+        if (movementInput.IsBlocking && canBlock)
         {
             playerAnimations.PlayerBlockAnimation(true);
             playerMovement.MovePlayer(Vector2.zero);
@@ -126,6 +130,14 @@ public class PlayerController : MonoBehaviour
     {
         GameController.instance.GameWin();
         enabled = false;
+    }
+    public void PlayerCanDash()
+    {
+        canDash = true;
+    }
+    public void PlayerCanBlock()
+    {
+        canBlock = true;
     }
 
 }

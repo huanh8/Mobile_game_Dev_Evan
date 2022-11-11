@@ -17,6 +17,7 @@ public class PlayerAttack : MonoBehaviour
     public BoxCollider2D boxCollider;
     [SerializeField] private float colliderDistance = 1f;
     [SerializeField] private float sightRange = 1f;
+    public bool canShooting = false;
 
     void Start()
     {
@@ -28,7 +29,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Time.time >= nextAttack)
         {
-            if (!EnemyInSight())
+            if (!EnemyInSight() && canShooting)
             {
                 animator.SetTrigger("Shooting");
             }
@@ -78,6 +79,8 @@ public class PlayerAttack : MonoBehaviour
         Gizmos.DrawWireCube(boxCollider.bounds.center + transform.right * sightRange * -transform.localScale.x * colliderDistance,
          new Vector3(boxCollider.bounds.size.x * sightRange, boxCollider.bounds.size.y * sightRange, boxCollider.bounds.size.z));
     }
-
-
+    public void PlayerCanShooting()
+    {
+        canShooting = true;
+    }
 }
