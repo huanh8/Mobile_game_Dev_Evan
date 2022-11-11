@@ -29,9 +29,15 @@ public class PlayerAttack : MonoBehaviour
         if (Time.time >= nextAttack)
         {
             if (!EnemyInSight())
+            {
                 animator.SetTrigger("Shooting");
+            }
             else
+            {
                 animator.SetTrigger("Attack");
+                AudioManager.instance.PlaySound(AudioManager.instance.SwordClip);
+            }
+
 
             nextAttack = Time.time + attacCooldown;
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, whatIsEnemies);
