@@ -20,6 +20,9 @@ public class Knockback : MonoBehaviour
     private IEnumerator ResetKnockback()
     {
         yield return new WaitForSeconds(delay);
+        // check if the rigibody body type is static, break the coroutine
+        if (rb.bodyType == RigidbodyType2D.Static) yield break;
+
         rb.velocity = Vector2.zero;
         yield return new WaitForSeconds(delay);
         OnDone.Invoke();
