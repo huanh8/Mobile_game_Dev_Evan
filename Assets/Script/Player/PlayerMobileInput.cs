@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
+
 
 public class PlayerMobileInput : MonoBehaviour, IMovementInput
 {
@@ -12,7 +14,9 @@ public class PlayerMobileInput : MonoBehaviour, IMovementInput
     public bool IsBlocking { get; private set; }
     public event Action OnFireEvent;
     public event Action OnDashEvent;
-
+    public Joystick joystick;
+    public MobileButton jumpButton;
+    public MobileButton attackButton;
     void Update()
     {
         GetCouchInput();
@@ -25,28 +29,35 @@ public class PlayerMobileInput : MonoBehaviour, IMovementInput
 
     private void GetMovementInput()
     {
-        Horizontal = Input.GetAxis("Horizontal");
+        Horizontal = joystick.Horizontal;
+        if (joystick.Horizontal >= 0.2f)
+            Horizontal = 1;
+        else if (joystick.Horizontal <= -0.2f)
+            Horizontal = -1;
+        else
+            Horizontal = 0;
         MovementInputVector = new Vector2(Horizontal, 0);
     }
     private void GetJumpInput()
     {
-        IsJumping = Input.GetButtonDown("Jump");
+        IsJumping = joystick.Vertical >= 0.5f || jumpButton.IsPressed;
     }
+
 
     private void GetFireInput()
     {
-        if (Input.GetButtonDown("Fire1") && !IsBlocking && !IsCrouching)
+        if (attackButton.IsPressed && !IsBlocking && !IsCrouching)
         {
             OnFireEvent?.Invoke();
         }
     }
     private void GetCouchInput()
     {
-        if (Input.GetButtonDown("Crouch"))
+        if (joystick.Vertical <= -0.5f)
         {
             IsCrouching = true;
         }
-        else if (Input.GetButtonUp("Crouch"))
+        else
         {
             IsCrouching = false;
         }
@@ -60,11 +71,11 @@ public class PlayerMobileInput : MonoBehaviour, IMovementInput
     }
     private void GetBlockInput()
     {
-        if (IsCrouching && Input.GetButtonDown("Fire1"))
+        if (IsCrouching && attackButton.IsPressed)
         {
             IsBlocking = true;
         }
-        else if (!IsCrouching || Input.GetButtonUp("Fire1"))
+        else if (!IsCrouching || !attackButton.IsPressed)
         {
             IsBlocking = false;
         }
