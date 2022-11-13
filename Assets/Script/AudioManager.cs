@@ -30,6 +30,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip DashClip;
     public AudioClip HeavyAttackClip;
     public AudioClip BlockClip;
+    public AudioClip WalkClip;
 
 
     void Awake()
@@ -58,6 +59,11 @@ public class AudioManager : MonoBehaviour
     public void PlayMusic(AudioClip clip)
     {
         musicSource.clip = clip;
+        musicSource.Play();
+    }
+    public void PlayBattleMusic()
+    {
+        musicSource.clip = battle1Clip;
         musicSource.Play();
     }
 }

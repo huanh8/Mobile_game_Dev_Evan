@@ -15,12 +15,11 @@ public class PlayerController : MonoBehaviour
     public Transform blockPoint;
     private BoxCollider2D feetCollider;
     public GameObject HealthBar;
-    //get collider for head
-    // canDash get = false by default private set
-  
-     public bool canDash = false;
-     public bool canBlock = false;
-  
+    public GameObject JoyStickPack;
+
+    public bool canDash = false;
+    public bool canBlock = false;
+
     void Awake()
     {
         feetCollider = GetComponent<BoxCollider2D>();
@@ -32,10 +31,6 @@ public class PlayerController : MonoBehaviour
         playerAttack = GetComponent<PlayerAttack>();
         playerHealth = GetComponent<Health>();
         blockPoint = transform.GetChild(1);
-        //sbscript a onfire event to the player attack script and play attack animation
-        //movementInput.OnFireEvent += playerAttack.Attack;
-        // dash event
-        //movementInput.OnDashEvent += Dash;
     }
 
     void Update()
@@ -61,7 +56,6 @@ public class PlayerController : MonoBehaviour
 
         if (checkGround.IsGrounded() && movementInput.IsJumping)
         {
-            AudioManager.instance.PlaySound(AudioManager.instance.JumpClip);
             playerMovement.PlayerJump();
         }
 
@@ -73,9 +67,8 @@ public class PlayerController : MonoBehaviour
     }
     private void Dash()
     {
-        if (checkGround.IsGrounded()&& canDash)
+        if (checkGround.IsGrounded() && canDash)
         {
-            AudioManager.instance.PlaySound(AudioManager.instance.DashClip);
             playerMovement.PlayerCanDash(movementInput.MovementInputVector);
             playerAnimations.PlayerDashAnimation(playerMovement.IsDashing);
         }
@@ -106,12 +99,14 @@ public class PlayerController : MonoBehaviour
     {
         movementInput.OnFireEvent -= playerAttack.Attack;
         movementInput.OnDashEvent -= Dash;
-
-        // set collider physics material to HasFriction
         if (feetCollider != null)
             feetCollider.sharedMaterial = new PhysicsMaterial2D("HasFriction");
 
         playerAnimations.PlayWalkAnimation(0f);
+
+        if (JoyStickPack != null)
+            JoyStickPack.SetActive(false);
+
     }
     void OnEnable()
     {
@@ -120,6 +115,9 @@ public class PlayerController : MonoBehaviour
         if (feetCollider != null)
             // set the physics material to NoFriction
             feetCollider.sharedMaterial = new PhysicsMaterial2D("NoFriction");
+        if (JoyStickPack != null)
+            JoyStickPack.SetActive(true);
+        
     }
     public void PlayerDeadEvent()
     {
@@ -139,5 +137,24 @@ public class PlayerController : MonoBehaviour
     {
         canBlock = true;
     }
-
+    public void PlayerDashSound()
+    {
+        AudioManager.instance.PlaySound(AudioManager.instance.DashClip);
+    }
+    public void PlayerJumpSound()
+    {
+        AudioManager.instance.PlaySound(AudioManager.instance.JumpClip);
+    }
+    public void PlayerAttackSound()
+    {
+        AudioManager.instance.PlaySound(AudioManager.instance.SwordClip);
+    }
+    public void PlayerWalkSound()
+    {
+        AudioManager.instance.PlaySound(AudioManager.instance.WalkClip);
+    }
+    public void PlayerHurtSound()
+    {
+        AudioManager.instance.PlaySound(AudioManager.instance.HurtClip);
+    }
 }

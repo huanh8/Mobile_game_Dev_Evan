@@ -36,7 +36,6 @@ public class PlayerAttack : MonoBehaviour
             else
             {
                 animator.SetTrigger("Attack");
-                AudioManager.instance.PlaySound(AudioManager.instance.SwordClip);
             }
 
 
