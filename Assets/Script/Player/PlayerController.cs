@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+/*
+* Mobile version settings:
+* 1. JoyStick GameObject to JoystickPack
+* 2. remove Playerinput.cs from Player add mobile input script instead
+* 3. Knockback script onBegin event set enable joystick gameobject therefor it won't be disabled when player is knocked back
+*/
 
 public class PlayerController : MonoBehaviour
 {
@@ -117,7 +123,7 @@ public class PlayerController : MonoBehaviour
             feetCollider.sharedMaterial = new PhysicsMaterial2D("NoFriction");
         if (JoyStickPack != null)
             JoyStickPack.SetActive(true);
-        
+
     }
     public void PlayerDeadEvent()
     {
