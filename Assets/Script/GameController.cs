@@ -37,13 +37,19 @@ public class GameController : MonoBehaviour
     public void GameOver()
     {
         if (gameOverMenu != null)
+        {
             gameOverMenu.SetActive(true);
-        AudioManager.instance.PlaySound(AudioManager.instance.SadClip);
+            AudioManager.instance.PlayMusic(AudioManager.instance.SadClip);
+        }
+
     }
     public void GameWin()
     {
         if (victoryMenu != null)
+        {
             victoryMenu.SetActive(true);
-        AudioManager.instance.PlaySound(AudioManager.instance.VictoryClip);
+            AudioManager.instance.PlayMusic(AudioManager.instance.VictoryClip);
+        }
+
     }
 }

@@ -11,7 +11,7 @@ public class StartMenu : MonoBehaviour
     void OnDisable()
     {
         if (AudioManager.instance != null)
-            AudioManager.instance.PlayMusic(AudioManager.instance.menuClip);
+            AudioManager.instance.PlayMusic(AudioManager.instance.exploreClip);
         if (storyManager != null)
             storyManager.SetActive(true);
         if (gameOverMenu != null)

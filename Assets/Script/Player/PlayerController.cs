@@ -56,7 +56,6 @@ public class PlayerController : MonoBehaviour
 
         if (checkGround.IsGrounded() && movementInput.IsJumping)
         {
-            AudioManager.instance.PlaySound(AudioManager.instance.JumpClip);
             playerMovement.PlayerJump();
         }
 
@@ -70,7 +69,6 @@ public class PlayerController : MonoBehaviour
     {
         if (checkGround.IsGrounded() && canDash)
         {
-            AudioManager.instance.PlaySound(AudioManager.instance.DashClip);
             playerMovement.PlayerCanDash(movementInput.MovementInputVector);
             playerAnimations.PlayerDashAnimation(playerMovement.IsDashing);
         }
@@ -119,6 +117,7 @@ public class PlayerController : MonoBehaviour
             feetCollider.sharedMaterial = new PhysicsMaterial2D("NoFriction");
         if (JoyStickPack != null)
             JoyStickPack.SetActive(true);
+        
     }
     public void PlayerDeadEvent()
     {
@@ -138,5 +137,24 @@ public class PlayerController : MonoBehaviour
     {
         canBlock = true;
     }
-
+    public void PlayerDashSound()
+    {
+        AudioManager.instance.PlaySound(AudioManager.instance.DashClip);
+    }
+    public void PlayerJumpSound()
+    {
+        AudioManager.instance.PlaySound(AudioManager.instance.JumpClip);
+    }
+    public void PlayerAttackSound()
+    {
+        AudioManager.instance.PlaySound(AudioManager.instance.SwordClip);
+    }
+    public void PlayerWalkSound()
+    {
+        AudioManager.instance.PlaySound(AudioManager.instance.WalkClip);
+    }
+    public void PlayerHurtSound()
+    {
+        AudioManager.instance.PlaySound(AudioManager.instance.HurtClip);
+    }
 }
