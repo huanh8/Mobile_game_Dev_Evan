@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
         feetCollider = GetComponent<BoxCollider2D>();
     }
     public void MovePlayer(Vector2 movementVector)
-    {   
+    {
         if (!IsDashing)
             rb.velocity = new Vector2(movementVector.x * movementSpeed, rb.velocity.y);
     }
