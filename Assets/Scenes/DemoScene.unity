@@ -24622,7 +24622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockPoint: {fileID: 4097302496105797096}
   HealthBar: {fileID: 1347700688}
-  JoyStickPack: {fileID: 0}
+  JoyStickPack: {fileID: 1228915079}
   canDash: 0
   canBlock: 0
 --- !u!50 &918963644
@@ -26907,7 +26907,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 2, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -26924,7 +26924,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036573586}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -76.96, y: -1.5799999, z: 0}
+  m_LocalPosition: {x: -77.016914, y: -1.5799999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -36654,7 +36654,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Aotearoa
+  m_text: Alamy
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c9b5356971579494b9b27f0122ce83d1, type: 2}
   m_sharedMaterial: {fileID: 21725345230478544, guid: c9b5356971579494b9b27f0122ce83d1, type: 2}
@@ -62420,7 +62420,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
   OnDone:
     m_PersistentCalls:
@@ -65295,6 +65295,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
   m_PrefabInstance: {fileID: 1500097999}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2007679973 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
+  m_PrefabInstance: {fileID: 1500097999}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2009810603
 GameObject:
   m_ObjectHideFlags: 0
@@ -68836,7 +68847,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 2, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -71897,9 +71908,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 918963640}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df22b750299955d4f8fa470e9f393195, type: 3}
+  m_Script: {fileID: 11500000, guid: 18812693fa1989647be454b5ad42566f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  joystick: {fileID: 2007679973}
+  jumpButton: {fileID: 432842241}
+  attackButton: {fileID: 1854147959}
 --- !u!4 &4663945402481077648
 Transform:
   m_ObjectHideFlags: 0
