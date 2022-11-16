@@ -18381,7 +18381,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Obtain Fireball
+  m_text: '"New Skill -- FireBall"'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c9b5356971579494b9b27f0122ce83d1, type: 2}
   m_sharedMaterial: {fileID: 21725345230478544, guid: c9b5356971579494b9b27f0122ce83d1, type: 2}
@@ -38647,7 +38647,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: '"Learn fireball shooting"'
+          m_StringArgument: '"New Skill -- FireBall"'
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1241184831}
@@ -41954,7 +41954,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: '"Learn Block"'
+          m_StringArgument: '"New Skill -- Block"'
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1241184831}
@@ -73622,7 +73622,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: '"Learn Dashing"'
+          m_StringArgument: '"New Skill -- Dash"'
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1241184831}
@@ -74107,7 +74107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7372066894229396323, guid: 8ddc86026b0b336429124a0e1d52b945, type: 3}
       propertyPath: m_text
-      value: Once upon a time,  there was a  knight.
+      value: 'Once upon a time,  there was a  knight ,he wanted to be the bravest, '
       objectReference: {fileID: 0}
     - target: {fileID: 7372066894229396323, guid: 8ddc86026b0b336429124a0e1d52b945, type: 3}
       propertyPath: m_HorizontalAlignment
@@ -74127,7 +74127,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7372066894582231469, guid: 8ddc86026b0b336429124a0e1d52b945, type: 3}
       propertyPath: m_text
-      value: So he came to an ancient and mysterious land....
+      value: He didn't know what was waiting for him,
       objectReference: {fileID: 0}
     - target: {fileID: 7372066894612582288, guid: 8ddc86026b0b336429124a0e1d52b945, type: 3}
       propertyPath: m_IsActive
@@ -74283,7 +74283,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7372066894957315879, guid: 8ddc86026b0b336429124a0e1d52b945, type: 3}
       propertyPath: m_text
-      value: He wanted to be the bravest
+      value: so he came to an ancient and mysterious land.
       objectReference: {fileID: 0}
     - target: {fileID: 7372066895171868690, guid: 8ddc86026b0b336429124a0e1d52b945, type: 3}
       propertyPath: m_LocalScale.y
@@ -74291,7 +74291,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7372066895171868692, guid: 8ddc86026b0b336429124a0e1d52b945, type: 3}
       propertyPath: m_text
-      value: He doesn't know what's ahead of him? The adventure begins..
+      value: the adventure started from here...
       objectReference: {fileID: 0}
     - target: {fileID: 7372066895171868695, guid: 8ddc86026b0b336429124a0e1d52b945, type: 3}
       propertyPath: m_IsActive
