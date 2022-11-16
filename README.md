@@ -24,5 +24,5 @@
 
     Jump -- button orange
 
-![image](https://user-images.githubusercontent.com/71423494/201510201-972f35c6-763f-45ea-9cc8-7d9eb00b94d9.png)
+![image](https://user-images.githubusercontent.com/71423494/202316104-4f8cd6c8-c6d2-4d3e-93d4-55c36a8a5429.png)
 ![image](https://user-images.githubusercontent.com/71423494/201510228-14d4bb76-0b53-41f9-b82f-fbc4bcde183a.png)
